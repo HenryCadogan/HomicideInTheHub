@@ -15,6 +15,7 @@ public class ItemScript : MonoBehaviour {
 		//Adds the item to the inventory, updates the notebook and destroys the item gameobject.
 		NotebookManager.instance.inventory.AddItemToInventory (item);
 		NotebookManager.instance.UpdateNotebook();
+<<<<<<< HEAD
 		GameObject.Find ("Local Scripts").GetComponent<InputManager1> ().ShowCluePanel (item); 	//ADDITION BY WEDUNNIT
 
 
@@ -22,6 +23,13 @@ public class ItemScript : MonoBehaviour {
 		GameObject.Find ("Local Scripts").AddComponent<AudioSource> ();							//ADDITION BY WEDUNNIT
 		GameObject.Find ("Local Scripts").GetComponent<AudioSource> ().clip = Resources.Load<AudioClip> ("Sounds/mysterious-sfx"); //ADDITION BY WEDUNNIT
 		GameObject.Find ("Local Scripts").GetComponent<AudioSource> ().Play ();					//ADDITION BY WEDUNNIT
+=======
+
+		//WEDUNNIT
+		GameMaster GM = FindObjectOfType<GameMaster>();
+		GM.Penalise (-50);
+		Debug.Log (GM.GetScore ());
+>>>>>>> refs/remotes/origin/scoring
 
 		Destroy (gameObject);
 
