@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿// Here is a precise URL of the executable on the team website
+// http://wedunnit.me/webfiles/ass3/HomicideInTheHub-Win.zip
+
+using UnityEngine;
 using System.Collections;
 
 public class ItemScript : MonoBehaviour {
@@ -14,7 +17,8 @@ public class ItemScript : MonoBehaviour {
 	void OnMouseDown(){
 		//Adds the item to the inventory, updates the notebook and destroys the item gameobject.
 		NotebookManager.instance.inventory.AddItemToInventory (item);
-		NotebookManager.instance.UpdateNotebook();
+	    GameMaster.instance.UnblockAllCharacters ();	//ADDITION BY WEDUNNIT
+	    NotebookManager.instance.UpdateNotebook();
 		GameObject.Find ("Local Scripts").GetComponent<InputManager1> ().ShowCluePanel (item); 	//ADDITION BY WEDUNNIT
 
 
@@ -23,11 +27,7 @@ public class ItemScript : MonoBehaviour {
 		GameObject.Find ("Local Scripts").GetComponent<AudioSource> ().clip = Resources.Load<AudioClip> ("Sounds/mysterious-sfx"); //ADDITION BY WEDUNNIT
 		GameObject.Find ("Local Scripts").GetComponent<AudioSource> ().Play ();					//ADDITION BY WEDUNNIT
 
-		//WEDUNNIT
-		GameMaster GM = FindObjectOfType<GameMaster>();
-		GM.Penalise (-50);
-		Debug.Log (GM.GetScore ());
-
+		GameMaster.instance.GainScore (50); //ADDITION BY WEDUNNIT
 		Destroy (gameObject);
 
 	}
