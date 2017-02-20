@@ -8,8 +8,6 @@ using System.Linq;
 using Assets.Classes;
 using Debug = UnityEngine.Debug;
 
-//Used for take in pick items
-
 public class GameMaster : MonoBehaviour {
 	/* Initialises all of the objects required generate the mystery and the game world except the detectives and verbal clues. 
 	 * Distibutes the clues and characters throughout the scenes.
