@@ -1,51 +1,71 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System;
 using System.IO;
+using System;
+using System.Linq;
 
-public class Leaderboard : MonoBehaviour {
 
-	public Text scoreGUI;
-	public Text nameGUI;
+public class Leaderboard : MonoBehaviour
+{
+	//CLASS ADDITION BY WEDUNNIT
+	/// <summary>
+	/// The text object that displays the scores of the leaderboard.
+	/// </summary>
+    public Text scoreGUI;	//dragged in unity editor
+	/// <summary>
+	/// The text object that displays the names of the players on the leaderboard.
+	/// </summary>
+    public Text nameGUI;
 
-	// Use this for initialization
-	void Start () {
-		string scoreText = "";
-		string nameText = "";
-		List<string> nameList = new List<string>();
-		List<int> scoreList = new List<int> ();
+	private List<KeyValuePair<string,int>> scoreList = new List<KeyValuePair<string,int>>();	//List of pairs
+
+
+	/// <summary>
+	/// Gets the scores from file & stores them in scoreList.
+	/// </summary>
+	private void GetScores(){
+		KeyValuePair<string,int> scorePair = new KeyValuePair<string,int> ();
 		using (StreamReader sr = new StreamReader("leaderboard.txt"))
-			{
-				while (sr.EndOfStream == false) {
-					nameList.Add (sr.ReadLine());
-					scoreList.Add (int.Parse (sr.ReadLine()));
-				}
+		{
+			int score;
+			string name;
+			while (sr.EndOfStream == false){
+				name = sr.ReadLine();
+				score = int.Parse(sr.ReadLine());
+				scorePair = new KeyValuePair<string,int> (name, score);
+				//print (scorePair.Key);
+				//print (scorePair.Value);
+				scoreList.Add (scorePair);
 			}
-		Debug.Log (nameList.Count.ToString ());
-		List<int> sortedScores = new List<int>(scoreList);
-		sortedScores.Sort ();
-		sortedScores.Reverse ();
-		Debug.Log (sortedScores [0]);
-		for(int i=0; i<sortedScores.Count; i++) {
-			int forScore = sortedScores [i];
-			Debug.Log (forScore);
-			int scorePos = scoreList.IndexOf (forScore);
-			Debug.Log (scorePos);
-			scoreText = scoreText + scoreList [scorePos].ToString () + "\r\n";
-			Debug.Log (scoreText);
-			nameText = nameText + nameList [scorePos] + "\r\n";
-			Debug.Log (nameText);
-			scoreList.RemoveAt (scorePos);
-			nameList.RemoveAt (scorePos);
+			sr.Close();
 		}
-		scoreGUI.text = scoreText;
-		nameGUI.text = nameText;
+		scoreList = scoreList.OrderByDescending(x => x.Value).ToList();	//sorts list based on value using linq
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+	/// <summary>
+	/// Shows the scores on leaderboard.
+	/// </summary>
+	private void ShowScores(){
+		string scoreText = "";	//string to be showin in textbox
+		string nameText = "";
+		for (int i = 0; i < scoreList.Count; i++) {
+			scoreText = scoreText + scoreList [i].Value + "\r\n";
+			nameText = nameText + scoreList [i].Key + "\r\n";
+		}
+		if (scoreGUI != null) {
+			scoreGUI.text = scoreText;
+		}
+		if (nameGUI != null) {
+			nameGUI.text = nameText;
+		}
 	}
-}
+
+    // Use this for initialization
+    void Start()
+    {
+		GetScores ();
+		ShowScores ();
+    }
+ }
+

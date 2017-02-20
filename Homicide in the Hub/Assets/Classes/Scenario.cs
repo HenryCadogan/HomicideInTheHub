@@ -18,6 +18,10 @@ public class Scenario
 	private List<VerbalClue> relevant_verbal_clues = new List<VerbalClue> ();
 	private MurderWeapon weapon;
 	private string motive;
+
+	/// <summary>
+	/// A convenience property to store the name of the murderer.
+	/// </summary>
 	private string murdererName; //ADDITION BY WEDUNNIT
 
 	private string[] motives = { "homewrecker", "loanshark", "promotion", "unfriended", "blackmail", "avenge_friend", "avenge_pet" };
@@ -128,7 +132,7 @@ public class Scenario
 			} else {
 				cause_of_death = "electrocution";
 			}
-			motiveClause = "because the victim was looking after either " + getRandomNonMurderingNPCName (murdererName) + " or " + murdererName + "'s " + species + " when it " +
+			motiveClause = " because the victim was looking after either " + getRandomNonMurderingNPCName (murdererName) + " or " + murdererName + "'s " + species + " when it " +
 			"died of " + cause_of_death + ", I can't remember.";  
 			return motiveClause;
 		default:
@@ -206,20 +210,20 @@ public class Scenario
 			relevant_item_clues.Add (item_clues [7]);
 			break;
 		case "Superhero":
-			item_clue_pool.Add (item_clues [7]); 		// TODO:USE RELEVENT CLUE 	//ADDITION BY WEDUNNIT
-			relevant_item_clues.Add (item_clues [7]);	// TODO:USE RELEVENT CLUE 	//ADDITION BY WEDUNNIT
+			item_clue_pool.Add (item_clues [19]); 		//Dumbbells 	//ADDITION BY WEDUNNIT
+			relevant_item_clues.Add (item_clues [19]); 	//ADDITION BY WEDUNNIT
 			break;
-		case "The Last Samurai":
-			item_clue_pool.Add (item_clues [7]); 		// TODO:USE RELEVENT CLUE	//ADDITION BY WEDUNNIT
-			relevant_item_clues.Add (item_clues [7]);	// TODO:USE RELEVENT CLUE	//ADDITION BY WEDUNNIT
+		case "Mad scientist":
+			item_clue_pool.Add (item_clues [18]); 		// glasses	//ADDITION BY WEDUNNIT
+			relevant_item_clues.Add (item_clues [18]);	//ADDITION BY WEDUNNIT
 			break;
 		case "Telechubbie":
-			item_clue_pool.Add (item_clues [7]); 		// TODO:USE RELEVENT CLUE	//ADDITION BY WEDUNNIT
-			relevant_item_clues.Add (item_clues [7]);	// TODO:USE RELEVENT CLUE	//ADDITION BY WEDUNNIT
+			item_clue_pool.Add (item_clues [15]); 	//purse			//ADDITION BY WEDUNNIT
+			relevant_item_clues.Add (item_clues [15]);	//ADDITION BY WEDUNNIT
 			break;
 		case "Reginald M IV":
-			item_clue_pool.Add (item_clues [7]); 		// TODO:USE RELEVENT CLUE	//ADDITION BY WEDUNNIT
-			relevant_item_clues.Add (item_clues [7]);	// TODO:USE RELEVENT CLUE	//ADDITION BY WEDUNNIT
+			item_clue_pool.Add (item_clues [17]); 	//monocle			//ADDITION BY WEDUNNIT
+			relevant_item_clues.Add (item_clues [17]);		//ADDITION BY WEDUNNIT
 			break;
 		default:
 			throw new System.ArgumentException (murdererName + " does not have any clues associated with them.");

@@ -13,6 +13,7 @@ HomicideInTheHub/[Ll]ibrary/
 .vs/
 HomicideInTheHub/*.userprefs
 HomicideInTheHub/*.csproj
+HomicideInTheHub/HomicideInTheHub.userprefs
 /*.pidb
 /*.suo
 HomicideInTheHub/*.sln*
@@ -53,3 +54,6 @@ Homicide in the Hub/Homicide in the Hub.userprefs
 Homicide in the Hub/Library/
 *.csproj
 Homicide in the Hub/Temp/
+Homicide in the Hub/obj/
+Homicide in the Hub/Homicide in the Hub.sln
+Homicide in the Hub/Assembly-CSharp.csproj.DotSettings

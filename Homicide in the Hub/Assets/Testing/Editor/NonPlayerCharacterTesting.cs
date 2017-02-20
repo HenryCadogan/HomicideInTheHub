@@ -13,7 +13,7 @@ public class NonPlayerCharacterTesting
     private GameObject prefab;
     private List<string> weaknesses = new List<string> {"test1","test2","test3"};
 
-    private string[] responses = new string[9] {
+    private List<string> responses = new List<string>() {
         "Don’t try and force me to tell you anything. I’ve got more money than you.",
         "Don’t patronise me you cretin. I’ve got more money than you.",
         "How dare you threaten me you lunatic, I’ve got more money than you.",
@@ -44,10 +44,12 @@ public class NonPlayerCharacterTesting
         verbalClue = new VerbalClue (null, null);
         npc = new NonPlayerCharacter(null,null,null,prefab,weaknesses,null);
         isMurderer = npc.IsMurderer ();
+        //set verbal clue to empty so all tests work
+        npc.setVerbalClue(null);
     }
 
 
-	[Test]
+    [Test]
 	public void GetMurdererTest()
 	{
 	    //Check is false
@@ -70,7 +72,6 @@ public class NonPlayerCharacterTesting
 	[Test]
 	public void SetVerbalClueTest()
 	{
-		Assert.IsNull (npc.getVerbalClue ());
 		//Act
 		npc.setVerbalClue (verbalClue);
 
@@ -114,4 +115,8 @@ public class NonPlayerCharacterTesting
 			Assert.AreSame (npc.GetResponse (questioningStyles [i]), responses [i]);
 		}
 	}
+
+
+
+
 }

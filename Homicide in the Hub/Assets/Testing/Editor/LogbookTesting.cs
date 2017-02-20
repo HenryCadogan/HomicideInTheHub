@@ -1,17 +1,26 @@
-﻿using JetBrains.Annotations;
+﻿using System;
 using NUnit.Framework;
+using UnityEngine;
 
 public class LogbookTesting{
 
     private Logbook logbook;
     private VerbalClue verbalClue;
+    private GameMaster gameMaster;
 
     [TestFixtureSetUp]
     public void TestSetup()
     {
-        logbook = new Logbook();
-        verbalClue = new VerbalClue(null,null);
-        logbook.AddVerbalClueToLogbook (verbalClue);
+        try
+        {
+            logbook = new Logbook();
+            verbalClue = new VerbalClue(null, null);
+            logbook.AddVerbalClueToLogbook(verbalClue);
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e);
+        }
     }
 
 	[Test]
