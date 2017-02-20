@@ -1,11 +1,12 @@
-﻿using UnityEngine;
+﻿// Here is a precise URL of the executable on the team website
+// http://wedunnit.me/webfiles/ass3/HomicideInTheHub-Win.zip
+
+using UnityEngine;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Assets.Classes;
 using Debug = UnityEngine.Debug;
-
-//Used for take in pick items
 
 public class GameMaster : MonoBehaviour {
 	/* Initialises all of the objects required generate the mystery and the game world except the detectives and verbal clues. 

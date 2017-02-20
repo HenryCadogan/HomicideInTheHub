@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 ﻿using System.Collections.Generic;
+=======
+﻿// Here is a precise URL of the executable on the team website
+// http://wedunnit.me/webfiles/ass3/HomicideInTheHub-Win.zip
+
+using System.Collections.Generic;
+>>>>>>> origin/master
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
