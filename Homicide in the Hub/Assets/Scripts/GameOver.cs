@@ -1,5 +1,5 @@
 
-﻿// Here is a precise URL of the executable on the team website
+// Here is a precise URL of the executable on the team website
 // http://wedunnit.me/webfiles/ass3/HomicideInTheHub-Win.zip
 
 using UnityEngine;
